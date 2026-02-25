@@ -986,6 +986,34 @@ python3 generate_test_pcap.py
 
 ---
 
+**🔧 Windows Console Encoding Fix (Important)**
+
+If the output appears corrupted like:
+
+ΓòöΓòÉΓòÉΓòÉ...
+
+instead of proper box characters:
+
+╔══════════════════════════════════════════════╗
+
+this is caused by Windows PowerShell using a non-UTF-8 code page.
+
+**✅ Temporary Fix (Recommended)**
+
+Before running the program, execute:
+
+chcp 65001
+
+Then run:
+
+```.\dpi_engine.exe input.pcap output.pcap```
+
+This switches the console to UTF-8 mode, allowing proper rendering of Unicode box-drawing characters.
+
+**✅ Alternative Fix (PowerShell UTF-8 Output)**
+```$OutputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8```
+
+
 ## 12. Extending the Project
 
 ### Ideas for Improvement
