@@ -866,7 +866,7 @@ Connection to YouTube:
 
 ### Prerequisites
 
-- **macOS/Linux** with C++17 compiler
+- **For Windows** with C++17 compiler
 - **g++** or **clang++**
 - No external libraries needed!
 
@@ -874,43 +874,37 @@ Connection to YouTube:
 
 **Simple Version:**
 ```bash
-g++ -std=c++17 -O2 -I include -o dpi_simple \
-    src/main_working.cpp \
-    src/pcap_reader.cpp \
-    src/packet_parser.cpp \
-    src/sni_extractor.cpp \
-    src/types.cpp
+g++ -std=c++17 -O2 -I include -o dpi_simple src/
+main_working.cpp src/pcap_reader.cpp src/packet_parser.cpp src/
+sni_extractor.cpp src/types.cpp
 ```
 
 **Multi-threaded Version:**
 ```bash
-g++ -std=c++17 -pthread -O2 -I include -o dpi_engine \
-    src/dpi_mt.cpp \
-    src/pcap_reader.cpp \
-    src/packet_parser.cpp \
-    src/sni_extractor.cpp \
-    src/types.cpp
+g++ -std=c++17 -pthread -O2 -I include -o dpi_engine src/
+dpi_mt.cpp src/pcap_reader.cpp src/packet_parser.cpp src/
+sni_extractor.cpp src/types.cpp
 ```
 
 ### Running
 
 **Basic usage:**
 ```bash
-./dpi_engine test_dpi.pcap output.pcap
+.\dpi_engine test_dpi.pcap output.pcap
 ```
 
 **With blocking:**
 ```bash
-./dpi_engine test_dpi.pcap output.pcap \
-    --block-app YouTube \
-    --block-app TikTok \
-    --block-ip 192.168.1.50 \
+.\dpi_engine.exe test_dpi.pcap output.pcap `
+    --block-app YouTube `
+    --block-app TikTok `
+    --block-ip 192.168.1.50 `
     --block-domain facebook
 ```
 
 **Configure threads (multi-threaded only):**
 ```bash
-./dpi_engine input.pcap output.pcap --lbs 4 --fps 4
+.\dpi_engine.exe input.pcap output.pcap --lbs 4 --fps 4
 # Creates 4 LB threads × 4 FP threads = 16 processing threads
 ```
 
